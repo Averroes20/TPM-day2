@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue CDN</title>
+</head>
+<body>
+    <div id="app">
+        <h3>Todo List (TPM-2)</h3>
+        <div>
+            <p><strong>Todo list:</strong></p>
+            <ol>
+                <li v-for="item in shoppingList">
+                    {{ item.name }}
+                </li>
+            </ol>
+        </div>
+
+
+        <form v-on:submit.prevent="addItem">
+            <p>
+                <input type="text" required placeholder="item name.." v-model="itemName">
+                <button type="submit">Add item</button>
+            </p>
+        </form>
+        <p v-if="shoppingList.length >= 4">
+            Hebat!
+        </p>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+            return {
+                itemName: null,
+                shoppingList: [
+                ]
+            }
+            },
+            methods: {
+                addItem(){
+                    let item = {
+                        name: this.itemName
+                    }
+                    this.shoppingList.push(item)
+                    this.itemName = null
+            }
+            }
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
