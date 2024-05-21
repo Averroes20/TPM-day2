@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue CDN</title>
+    <title>Todo List</title>
 </head>
 <body>
     <div id="app">
@@ -11,7 +11,7 @@
         <div>
             <p><strong>Todo list:</strong></p>
             <ol>
-                <li v-for="item in shoppingList">
+                <li v-for="item in todoList">
                     {{ item.name }}
                 </li>
             </ol>
@@ -24,7 +24,7 @@
                 <button type="submit">Add item</button>
             </p>
         </form>
-        <p v-if="shoppingList.length >= 4">
+        <p v-if="todoList.length >= 4">
             Hebat!
         </p>
     </div>
@@ -36,7 +36,7 @@
             data() {
             return {
                 itemName: null,
-                shoppingList: [
+                todoList: [
                 ]
             }
             },
@@ -45,7 +45,7 @@
                     let item = {
                         name: this.itemName
                     }
-                    this.shoppingList.push(item)
+                    this.todoList.push(item)
                     this.itemName = null
             }
             }
